@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Quest</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="game"></div>
+
+  <div id="hud">
+    <h2>🧱 Block Quest</h2>
+    <p>⭐ คะแนน: <span id="score">0</span></p>
+    <p>🏠 ภารกิจ: <span id="progress">0/10</span></p>
+    <p id="mapName">แผนที่หมู่บ้าน</p>
+    <small>WASD เดิน · Space กระโดด</small>
+    <small>คลิกเพื่อเริ่มเกม · เล็ง + ไปที่สิ่งของแล้วคลิก</small>
+    <small id="petStatus">🐾 ยังไม่มีสัตว์เลี้ยง</small>
+  </div>
+
+  <div id="buttons">
+    <button id="shopButton">💎 ร้านค้า</button>
+    <button id="characterButton">🧑 เปลี่ยนตัวละคร</button>
+    <button id="viewButton">👀 มุมมองบุคคลที่สาม</button>
+    <button id="bagButton">🎒 กระเป๋าของฉัน</button>
+  </div>
+
+  <div id="crosshair">+</div>
+  <div id="notice"></div>
+  <div id="hint">เล็ง + ไปที่สิ่งของแล้วคลิกเพื่อทำภารกิจ</div>
+
+  <div id="startScreen" class="overlay">
+    <div class="panel">
+      <h1>🧱 Block Quest</h1>
+      <p>ออกสำรวจหมู่บ้าน ทำภารกิจ และสะสมคะแนน!</p>
+      <p>ทำภารกิจในหมู่บ้านให้ครบ แล้วไปยังแผนที่เมืองผ่านประตูวาร์ป</p>
+      <button id="startButton">เริ่มเล่นเกม</button>
+    </div>
+  </div>
+
+  <div id="quizScreen" class="overlay hidden">
+    <div class="panel quizPanel">
+      <h2 id="quizTitle">ภารกิจ</h2>
+      <p id="question"></p>
+      <div id="answers"></div>
+      <p id="feedback"></p>
+      <button id="nextButton" class="hidden">กลับไปเล่นเกม</button>
+    </div>
+  </div>
+
+  <div id="shopScreen" class="overlay hidden">
+    <div class="panel">
+      <h2>💎 ร้านค้าของนักผจญภัย</h2>
+      <p>คะแนนของแก: <span id="shopScore">0</span></p>
+      <div id="shopItems"></div>
+      <button class="closeButton">ปิดร้านค้า</button>
+    </div>
+  </div>
+
+  <div id="bagScreen" class="overlay hidden">
+    <div class="panel">
+      <h2>🎒 กระเป๋าของฉัน</h2>
+      <div id="inventoryList"></div>
+      <button class="closeButton">ปิดกระเป๋า</button>
+    </div>
+  </div>
+
+  <div id="characterScreen" class="overlay hidden">
+    <div class="panel">
+      <h2>🧑 เลือกตัวละคร</h2>
+      <p>เลือกสีชุดตัวละครสไตล์บล็อก</p>
+      <div id="characterChoices"></div>
+      <button class="closeButton">เสร็จแล้ว</button>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
